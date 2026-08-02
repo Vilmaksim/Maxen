@@ -1,48 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Maxen</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
-<h1>Maxen</h1>
-
-<p id="online">🟢 Онлайн: 0</p>
-<p id="typing"></p>
-
-<div id="chat"></div>
-
-<input id="nickname" placeholder="Твой ник">
-
-<input id="message" placeholder="Сообщение">
-
-<button id="emoji">😀</button>
-
-<button id="send">Отправить</button>
+    <h1>Maxen</h1>
 
 
-<div id="emojiPanel">
+    <p id="online">🟢 Онлайн: 0</p>
 
-<span>😀</span><span>😃</span><span>😄</span><span>😁</span><span>😆</span><span>😅</span>
-<span>😂</span><span>🤣</span><span>😊</span><span>😎</span><span>😍</span><span>🥰</span>
-<span>😘</span><span>😜</span><span>🤔</span><span>🤨</span><span>😐</span><span>😴</span>
-<span>😭</span><span>😡</span><span>😱</span><span>😇</span><span>🤯</span><span>🥳</span>
+    <p id="typing"></p>
 
-<span>❤️</span><span>🧡</span><span>💛</span><span>💚</span><span>💙</span><span>💜</span>
-<span>🖤</span><span>🤍</span><span>💔</span><span>🔥</span><span>✨</span><span>⭐</span>
 
-<span>👍</span><span>👎</span><span>👏</span><span>🙏</span><span>💪</span><span>🤝</span>
-<span>👌</span><span>✌️</span><span>🤟</span><span>👀</span>
+    <div id="chat"></div>
 
-<span>🎉</span><span>🎊</span><span>🚀</span><span>💯</span><span>💀</span>
-<span>👑</span><span>⚡</span><span>💎</span><span>🎮</span>
 
-</div>
+    <input id="nickname" placeholder="Твой ник">
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="script.js"></script>
+
+    <br>
+
+
+    <input id="message" placeholder="Сообщение">
+
+
+    <button id="emoji">😀</button>
+
+    <button id="send">
+        Отправить
+    </button>
+
+
+
+    <div id="emojiPanel">
+
+        <span>😀</span>
+        <span>😃</span>
+        <span>😄</span>
+        <span>😁</span>
+        <span>😎</span>
+
+        <span>😂</span>
+        <span>🤣</span>
+        <span>😊</span>
+        <span>😍</span>
+        <span>🥰</span>
+
+        <span>😭</span>
+        <span>😡</span>
+        <span>😱</span>
+        <span>🤔</span>
+
+        <span>❤️</span>
+        <span>💙</span>
+        <span>💜</span>
+        <span>🖤</span>
+
+        <span>👍</span>
+        <span>👎</span>
+        <span>👏</span>
+        <span>🙏</span>
+
+        <span>🔥</span>
+        <span>🚀</span>
+        <span>🎉</span>
+        <span>🎮</span>
+        <span>💯</span>
+        <span>💀</span>
+
+    </div>
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="script.js"></script>
+
 
 </body>
+
 </html>
