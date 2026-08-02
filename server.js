@@ -20,8 +20,14 @@ io.on("connection", (socket) => {
 
 
     socket.on("message", (data) => {
-        io.emit("message", data);
+
+    io.emit("message", {
+        nickname: data.nickname,
+        text: data.text,
+        id: socket.id
     });
+
+});
 
 
     socket.on("typing", (nickname) => {
