@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Maxen Messenger</title>
+    <title>Maxen</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>🔥 Maxen Messenger</h1>
+<h1>Maxen</h1>
 
-<div id="chat">
-    <div id="messages"></div>
+<div id="chat"></div>
 
-    <input id="messageInput" placeholder="...">
-    <button onclick="sendMessage()">Send</button>
-</div>
+<input id="nickname" placeholder="Твой ник">
+
+<input id="message" placeholder="Сообщение">
+<button id="send">Отправить</button>
+
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="script.js"></script>
