@@ -10,27 +10,42 @@ app.use(express.static("public"));
 let online = 0;
 
 io.on("connection", (socket) => {
+
     online++;
 
     console.log("🟢 Пользователь подключился");
 
-    // отправляем всем количество людей
     io.emit("online", online);
 
 
+    // сообщения
     socket.on("message", (data) => {
         io.emit("message", data);
     });
 
 
+    // кто печатает
+    socket.on("typing", (nickname) => {
+        socket.broadcast.emit("typing", nickname);
+    });
+
+
+    // перестал печатать
+    socket.on("stopTyping", () => {
+        socket.broadcast.emit("stopTyping");
+    });
+
+
+    // выход
     socket.on("disconnect", () => {
+
         online--;
 
         console.log("🔴 Пользователь вышел");
 
-        // обновляем количество
         io.emit("online", online);
     });
+
 });
 
 
