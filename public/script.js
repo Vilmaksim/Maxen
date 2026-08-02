@@ -10,10 +10,10 @@ const onlineText = document.getElementById("online");
 const typingText = document.getElementById("typing");
 
 const emojiButton = document.getElementById("emoji");
-const emojiPanel = document.getElementById("emoji");
+const emojiPanel = document.getElementById("emojiPanel");
 
 
-// сохранение ника
+// Ник
 
 nicknameInput.value = localStorage.getItem("nickname") || "";
 
@@ -23,7 +23,7 @@ nicknameInput.addEventListener("input", () => {
 
 
 
-// отправка сообщения
+// Отправка
 
 sendButton.onclick = () => {
 
@@ -54,16 +54,15 @@ sendButton.onclick = () => {
 
 
 
-// получение сообщений
+// Получение сообщений
 
 socket.on("message", (data) => {
 
     chat.innerHTML += `
         <p>
-            <b>${data.nickname}:</b> ${data.text}
+        <b>${data.nickname}:</b> ${data.text}
         </p>
     `;
-
 
     chat.scrollTop = chat.scrollHeight;
 
@@ -71,7 +70,7 @@ socket.on("message", (data) => {
 
 
 
-// онлайн
+// Онлайн
 
 socket.on("online", (count) => {
 
@@ -81,15 +80,14 @@ socket.on("online", (count) => {
 
 
 
-// печатает...
+// Печатает
 
 let typingTimer;
 
 
 messageInput.addEventListener("input", () => {
 
-    const nickname = nicknameInput.value || "Гость";
-
+    let nickname = nicknameInput.value || "Гость";
 
     socket.emit("typing", nickname);
 
@@ -122,8 +120,7 @@ socket.on("stopTyping", () => {
 
 
 
-// ЭМОДЗИ
-
+// Эмодзи
 
 emojiButton.onclick = () => {
 
