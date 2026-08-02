@@ -9,8 +9,12 @@ const chat = document.getElementById("chat");
 const onlineText = document.getElementById("online");
 const typingText = document.getElementById("typing");
 
+const emojiButton = document.getElementById("emoji");
+const emojiPanel = document.getElementById("emoji");
 
-// сохраняем ник
+
+// сохранение ника
+
 nicknameInput.value = localStorage.getItem("nickname") || "";
 
 nicknameInput.addEventListener("input", () => {
@@ -18,7 +22,9 @@ nicknameInput.addEventListener("input", () => {
 });
 
 
-// отправка сообщений
+
+// отправка сообщения
+
 sendButton.onclick = () => {
 
     const nickname = nicknameInput.value.trim();
@@ -43,11 +49,13 @@ sendButton.onclick = () => {
 
 
     messageInput.value = "";
+
 };
 
 
 
 // получение сообщений
+
 socket.on("message", (data) => {
 
     chat.innerHTML += `
@@ -56,6 +64,7 @@ socket.on("message", (data) => {
         </p>
     `;
 
+
     chat.scrollTop = chat.scrollHeight;
 
 });
@@ -63,6 +72,7 @@ socket.on("message", (data) => {
 
 
 // онлайн
+
 socket.on("online", (count) => {
 
     onlineText.innerHTML = `🟢 Онлайн: ${count}`;
@@ -72,6 +82,7 @@ socket.on("online", (count) => {
 
 
 // печатает...
+
 let typingTimer;
 
 
@@ -103,34 +114,39 @@ socket.on("typing", (nickname) => {
 });
 
 
-
 socket.on("stopTyping", () => {
 
     typingText.innerHTML = "";
 
 });
 
-const emojiButton = document.getElementById("emoji");
-const emojiPanel = document.getElementById("emojiPanel");
 
 
-// открыть/закрыть эмодзи
+// ЭМОДЗИ
+
+
 emojiButton.onclick = () => {
 
     if (emojiPanel.style.display === "block") {
+
         emojiPanel.style.display = "none";
+
     } else {
+
         emojiPanel.style.display = "block";
+
     }
 
 };
 
 
-// выбор эмодзи
+
 emojiPanel.addEventListener("click", (event) => {
 
-    const emoji = event.target.textContent;
+    if (event.target.tagName === "SPAN") {
 
-    messageInput.value += emoji;
+        messageInput.value += event.target.textContent;
+
+    }
 
 });
