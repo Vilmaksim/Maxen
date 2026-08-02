@@ -23,7 +23,7 @@ nicknameInput.addEventListener("input", () => {
 
 
 
-// Отправка
+// Отправка сообщения
 
 sendButton.onclick = () => {
 
@@ -32,7 +32,7 @@ sendButton.onclick = () => {
 
 
     if (!nickname) {
-        alert("Введите ник!");
+        alert("Enter nickname");
         return;
     }
 
@@ -60,17 +60,24 @@ socket.on("message", (data) => {
 
     const myNickname = nicknameInput.value.trim();
 
-    let side = "message other";
+    let side = "other";
 
     if (data.nickname === myNickname) {
-        side = "message mine";
+        side = "mine";
     }
 
 
     chat.innerHTML += `
-        <div class="${side}">
-            <div class="name">${data.nickname}</div>
-            <div class="text">${data.text}</div>
+        <div class="message ${side}">
+
+            <div class="name">
+                ${data.nickname}
+            </div>
+
+            <div class="text">
+                ${data.text}
+            </div>
+
         </div>
     `;
 
@@ -85,7 +92,7 @@ socket.on("message", (data) => {
 
 socket.on("online", (count) => {
 
-    onlineText.innerHTML = `🟢 Онлайн: ${count}`;
+    onlineText.innerHTML = `🟢 Online: ${count}`;
 
 });
 
@@ -98,7 +105,7 @@ let typingTimer;
 
 messageInput.addEventListener("input", () => {
 
-    let nickname = nicknameInput.value || "Гость";
+    const nickname = nicknameInput.value || "Guest";
 
     socket.emit("typing", nickname);
 
@@ -115,10 +122,9 @@ messageInput.addEventListener("input", () => {
 });
 
 
-
 socket.on("typing", (nickname) => {
 
-    typingText.innerHTML = `${nickname} печатает...`;
+    typingText.innerHTML = `${nickname} is typing...`;
 
 });
 
@@ -131,7 +137,7 @@ socket.on("stopTyping", () => {
 
 
 
-// Эмодзи
+// Emoji
 
 emojiButton.onclick = () => {
 
