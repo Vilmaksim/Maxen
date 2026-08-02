@@ -1,19 +1,53 @@
 const socket = io();
 
-const input = document.getElementById("messageInput");
-const messages = document.getElementById("messages");
+const nicknameInput = document.getElementById("nickname");
+const messageInput = document.getElementById("message");
+const sendButton = document.getElementById("send");
+const chat = document.getElementById("chat");
 
-function sendMessage() {
-    const text = input.value;
 
-    if (text !== "") {
-        socket.emit("message", text);
-        input.value = "";
+// Загружаем сохранённый ник
+nicknameInput.value = localStorage.getItem("nickname") || "";
+
+
+// Сохраняем ник
+nicknameInput.addEventListener("input", () => {
+    localStorage.setItem("nickname", nicknameInput.value);
+});
+
+
+// Отправка сообщения
+sendButton.onclick = () => {
+
+    const nickname = nicknameInput.value.trim();
+    const text = messageInput.value.trim();
+
+    if (!nickname) {
+        alert("Введите ник!");
+        return;
     }
-}
 
-socket.on("message", (msg) => {
-    const p = document.createElement("p");
-    p.textContent = msg;
-    messages.appendChild(p);
+    if (!text) {
+        return;
+    }
+
+    socket.emit("message", {
+        nickname: nickname,
+        text: text
+    });
+
+    messageInput.value = "";
+};
+
+
+// Получение сообщения
+socket.on("message", (data) => {
+
+    chat.innerHTML += `
+        <p>
+            <b>${data.nickname}:</b> ${data.text}
+        </p>
+    `;
+
+    chat.scrollTop = chat.scrollHeight;
 });
