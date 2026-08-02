@@ -51,3 +51,9 @@ socket.on("message", (data) => {
 
     chat.scrollTop = chat.scrollHeight;
 });
+
+const onlineText = document.getElementById("online");
+
+socket.on("online", (count) => {
+    onlineText.innerHTML = `🟢 Онлайн: ${count}`;
+});
