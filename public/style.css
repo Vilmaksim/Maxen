@@ -1,59 +1,84 @@
 body {
+
     font-family: Arial, sans-serif;
     background: #222;
     color: white;
     text-align: center;
+
 }
 
+
+
 #chat {
+
     width: 80%;
     height: 400px;
     margin: 20px auto;
+
     background: #111;
+
     border-radius: 10px;
+
     padding: 15px;
+
     overflow-y: auto;
+
     text-align: left;
+
 }
+
 
 
 input {
+
     padding: 10px;
+
     border-radius: 5px;
+
     border: none;
+
     margin: 5px;
+
 }
+
 
 
 button {
+
     padding: 10px 15px;
+
     border-radius: 5px;
+
     border: none;
+
     cursor: pointer;
+
 }
 
 
-/* Эмодзи панель */
+
+/* Эмодзи */
 
 #emojiPanel {
 
     display: none;
 
-    background: #222;
-
-    padding: 10px;
-
-    border-radius: 10px;
+    background: #333;
 
     width: 320px;
 
-    height: 150px;
+    height: 160px;
 
     overflow-y: auto;
 
     margin: 10px auto;
 
+    padding: 10px;
+
+    border-radius: 10px;
+
 }
+
 
 
 #emojiPanel span {
@@ -69,9 +94,10 @@ button {
 }
 
 
+
 #emojiPanel span:hover {
 
-    background: #444;
+    background: #555;
 
     border-radius: 5px;
 
