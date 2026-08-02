@@ -1,168 +1,167 @@
-const socket = io();
+body {
 
+    font-family: Arial, sans-serif;
+    background: #222;
+    color: white;
+    text-align: center;
 
-const nicknameInput = document.getElementById("nickname");
-const messageInput = document.getElementById("message");
-const sendButton = document.getElementById("send");
-const chat = document.getElementById("chat");
+}
 
-const onlineText = document.getElementById("online");
-const typingText = document.getElementById("typing");
 
-const emojiButton = document.getElementById("emoji");
-const emojiPanel = document.getElementById("emojiPanel");
 
+#chat {
 
-// Nickname
+    width: 80%;
+    height: 400px;
 
-nicknameInput.value = localStorage.getItem("nickname") || "";
+    margin: 20px auto;
 
-nicknameInput.addEventListener("input", () => {
-    localStorage.setItem("nickname", nicknameInput.value);
-});
+    background: #111;
 
+    border-radius: 10px;
 
-// Send message
+    padding: 15px;
 
-sendButton.onclick = () => {
+    overflow-y: auto;
 
-    const nickname = nicknameInput.value.trim();
-    const text = messageInput.value.trim();
+    text-align: left;
 
+}
 
-    if (!nickname) {
-        alert("Enter nickname");
-        return;
-    }
 
 
-    if (!text) {
-        return;
-    }
+input {
 
+    padding: 10px;
 
-    socket.emit("message", {
-        nickname: nickname,
-        text: text
-    });
+    border-radius: 5px;
 
+    border: none;
 
-    messageInput.value = "";
+    margin: 5px;
 
-};
+}
 
 
 
-// Receive messages
+button {
 
-socket.on("message", (data) => {
+    padding: 10px 15px;
 
-    const myNickname = nicknameInput.value.trim();
+    border-radius: 5px;
 
-    let side = "other";
+    border: none;
 
-    if (data.nickname === myNickname) {
-        side = "mine";
-    }
+    cursor: pointer;
 
+}
 
-    chat.innerHTML += `
-        <div class="message ${side}">
 
-            <div class="name">
-                ${data.nickname}
-            </div>
 
-            <div class="text">
-                ${data.text}
-            </div>
+/* Сообщения */
 
-        </div>
-    `;
+.message {
 
+    max-width: 60%;
 
-    chat.scrollTop = chat.scrollHeight;
+    padding: 10px 15px;
 
-});
+    margin: 10px;
 
+    border-radius: 15px;
 
+    color: white;
 
-// Online
+}
 
-socket.on("online", (count) => {
 
-    onlineText.innerHTML = `🟢 Online: ${count}`;
 
-});
+.name {
 
+    font-size: 13px;
 
+    opacity: 0.7;
 
-// Typing
+    margin-bottom: 5px;
 
-let typingTimer;
+}
 
 
-messageInput.addEventListener("input", () => {
 
-    const nickname = nicknameInput.value || "Guest";
+.text {
 
-    socket.emit("typing", nickname);
+    font-size: 16px;
 
+}
 
-    clearTimeout(typingTimer);
 
 
-    typingTimer = setTimeout(() => {
+/* Чужие */
 
-        socket.emit("stopTyping");
+.other {
 
-    }, 1000);
+    background: #333;
 
-});
+    margin-right: auto;
 
+}
 
-socket.on("typing", (nickname) => {
 
-    typingText.innerHTML = `${nickname} is typing...`;
 
-});
+/* Мои */
 
+.mine {
 
-socket.on("stopTyping", () => {
+    background: #2563eb;
 
-    typingText.innerHTML = "";
+    margin-left: auto;
 
-});
+}
 
 
 
-// Emoji
+/* Emoji */
 
-emojiButton.onclick = () => {
+#emojiPanel {
 
-    if (emojiPanel.style.display === "block") {
+    display: none;
 
-        emojiPanel.style.display = "none";
+    background: #333;
 
-    } else {
+    width: 320px;
 
-        emojiPanel.style.display = "block";
+    height: 160px;
 
-    }
+    overflow-y: auto;
 
-};
+    margin: 10px auto;
 
+    padding: 10px;
 
-emojiPanel.addEventListener("click", (event) => {
+    border-radius: 10px;
 
-    if (event.target.tagName === "SPAN") {
+}
 
-        messageInput.value += event.target.textContent;
 
-    }
 
-});
+#emojiPanel span {
 
-    }
+    font-size: 25px;
 
-});
+    cursor: pointer;
+
+    display: inline-block;
+
+    padding: 5px;
+
+}
+
+
+
+#emojiPanel span:hover {
+
+    background: #555;
+
+    border-radius: 5px;
+
+}
