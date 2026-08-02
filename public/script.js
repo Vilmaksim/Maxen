@@ -58,11 +58,22 @@ sendButton.onclick = () => {
 
 socket.on("message", (data) => {
 
+    const myNickname = nicknameInput.value.trim();
+
+    let side = "message other";
+
+    if (data.nickname === myNickname) {
+        side = "message mine";
+    }
+
+
     chat.innerHTML += `
-        <p>
-        <b>${data.nickname}:</b> ${data.text}
-        </p>
+        <div class="${side}">
+            <div class="name">${data.nickname}</div>
+            <div class="text">${data.text}</div>
+        </div>
     `;
+
 
     chat.scrollTop = chat.scrollHeight;
 
