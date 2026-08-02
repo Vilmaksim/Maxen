@@ -62,9 +62,9 @@ socket.on("message", (data) => {
 
     let side = "other";
 
-    if (data.nickname === myNickname) {
-        side = "mine";
-    }
+    if (data.id === socket.id) {
+    side = "mine";
+}
 
 
     chat.innerHTML += `
