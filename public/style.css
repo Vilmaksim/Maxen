@@ -29,3 +29,18 @@ button {
     border: none;
     cursor: pointer;
 }
+
+#emojiPanel {
+    display: none;
+    background: #333;
+    padding: 10px;
+    border-radius: 10px;
+    width: 300px;
+    margin: 10px auto;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+#emojiPanel span {
+    cursor: pointer;
+}
