@@ -99,23 +99,14 @@ button {
 /* Чужие */
 
 .other {
-
     background: #333;
-
     margin-right: auto;
-
 }
 
 
-
-/* Мои */
-
 .mine {
-
-    background: #2563eb;
-
+    background: #333;
     margin-left: auto;
-
 }
 
 
