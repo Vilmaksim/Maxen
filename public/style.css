@@ -100,13 +100,13 @@ button {
 
 .other {
     background: #333;
-    margin-right: auto;
+    margin-left: auto;
 }
 
 
 .mine {
-    background: #333;
-    margin-left: auto;
+    background: red;
+    margin-right: auto;
 }
 
 
