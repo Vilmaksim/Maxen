@@ -99,6 +99,64 @@ button {
 
     background: #555;
 
+    .message {
+
+    max-width: 60%;
+
+    padding: 10px;
+
+    margin: 10px;
+
+    border-radius: 15px;
+
+    text-align: left;
+
+    word-wrap: break-word;
+
+}
+
+
+.message .name {
+
+    font-size: 13px;
+
+    opacity: 0.7;
+
+    margin-bottom: 5px;
+
+}
+
+
+.message .text {
+
+    font-size: 16px;
+
+}
+
+
+
+/* чужие сообщения */
+
+.other {
+
+    background: #333;
+
+    margin-right: auto;
+
+}
+
+
+
+/* мои сообщения */
+
+.mine {
+
+    background: #2563eb;
+
+    margin-left: auto;
+
+}
+
     border-radius: 5px;
 
 }
