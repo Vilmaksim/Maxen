@@ -109,3 +109,28 @@ socket.on("stopTyping", () => {
     typingText.innerHTML = "";
 
 });
+
+const emojiButton = document.getElementById("emoji");
+const emojiPanel = document.getElementById("emojiPanel");
+
+
+// открыть/закрыть эмодзи
+emojiButton.onclick = () => {
+
+    if (emojiPanel.style.display === "block") {
+        emojiPanel.style.display = "none";
+    } else {
+        emojiPanel.style.display = "block";
+    }
+
+};
+
+
+// выбор эмодзи
+emojiPanel.addEventListener("click", (event) => {
+
+    const emoji = event.target.textContent;
+
+    messageInput.value += emoji;
+
+});
